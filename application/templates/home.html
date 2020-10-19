@@ -1,0 +1,52 @@
+{% extends "baselayout.html" %}
+{% block title %} Home {% endblock %}
+{% block html_head%}
+    <script>
+        // When the user clicks on <div>, open the popup
+        function myFunction() {
+          var popup = document.getElementById("myPopup");
+          popup.classList.toggle("show");
+        }
+    </script>
+{% endblock%}
+{% block html_body %}
+
+
+    <!-- youtube video link row  -->
+    <div class="row" id="link_input_row" style="margin-top:200px;">
+        <div class="col-sm-2">
+        </div>
+
+        <div class="col mid">
+                {% with messages = get_flashed_messages() %}
+                  {% if messages %}
+                    {% for message in messages%}
+                        <div class="alert alert-info">
+                            <h6>{{message}}</h6>
+                        </div>
+                    {% endfor%}
+                  {% endif %}
+                {% endwith %}
+            <div class="card">
+                <div class="card-header bg-danger text-center">
+                    <h3 style="color:white"><strong>Paste your video link below</strong></h3>
+                </div>
+                <div class="card-body">
+                    <form method="post" action="/video_detail">
+                        <div class="form-group">
+                            <input class="form-control form-control-lg" name="video_link" type="text" required autofocus>
+                        </div>
+                        <div class="form-group text-center">
+                            <button class="btn btn-danger" type="submit"><strong>GO</strong></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-2">
+        </div>
+    </div>
+
+
+
+{% endblock %}

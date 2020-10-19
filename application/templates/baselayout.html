@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="{{url_for('static', filename='vendor/jquery/jquery.min.js')}}"></script>
+    <script src="{{url_for('static', filename='vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+
+    <!-- Toggle navigation things -->
+
+    <link rel="stylesheet" href="https://colorlib.com/polygon/concept/assets/vendor/bootstrap/css/bootstrap.min.css">
+    <link href="https://colorlib.com/polygon/concept/assets/vendor/fonts/circular-std/style.css" rel="stylesheet">
+    <link href="https://colorlib.com/polygon/concept/assets/libs/css/style.css" rel="stylesheet">
+    <link href="https://colorlib.com/polygon/concept/assets/vendor/fonts/fontawesome/css/fontawesome-all.css" rel="stylesheet">
+
+    <!-- Toggle navigation things -->
+    <link href="{{url_for('static', filename='vendor/bootstrap/css/bootstrap.css')}}" rel="stylesheet">
+    <link href="{{url_for('static', filename='css/simple-sidebar.css')}}" rel="stylesheet">
+    <link href="{{url_for('static', filename='css/style.css')}}" rel="stylesheet">
+    {% block html_head %}{% endblock %}
+</head>
+<body>
+<div class="fluid-container">
+    {% include "_includes/__navbar.html" %}
+    {% block html_body %} {% endblock %}
+
+</div>
+
+  <!-- Menu Toggle Script -->
+  <script>
+    $("#menu-toggle").click(function(e) {
+      e.preventDefault();
+      $("#wrapper").toggleClass("toggled");
+    });
+  </script>
+
+
+</body>
+</html>

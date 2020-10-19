@@ -1,0 +1,135 @@
+{% extends "baselayout.html" %}
+{% block title %} Details {% endblock %}
+{% block html_head%}
+    <style type="text/css">
+    .responsiveRapper {
+        overflow:hidden;
+        padding-bottom:56.25%;
+        padding-top:30px;
+        height:0;
+        position:relative;
+    }
+    .responsiveRapper iframe,
+    .responsiveRapper object,
+    .responsiveRapper embed {
+        top:0;
+        left:0;
+        width:100%;
+        height:100%;
+        position:absolute;
+    }
+
+    .wrapper {
+    display: block;
+    }
+    </style>
+
+{% endblock %}
+
+{% block html_body%}
+
+    <div class="d-flex" id="wrapper" style="margin-top:50px;">
+
+    <!-- Sidebar -->
+    <div class="bg-light border-right" id="sidebar-wrapper">
+        <div class="sidebar-heading">Paste Link below </div>
+        <div class="card">
+            <div class="card-body">
+                <form action="/video_detail" method="post">
+                    <div class="form-group">
+                        <input class="form-control" type="text" name="video_link">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="submit">
+                    </div>
+                </form>
+            </div>
+        </div>
+
+      <div class="list-group list-group-flush">
+        <a href="/home" class="list-group-item list-group-item-action bg-light">Home</a>
+        <a href="/about" class="list-group-item list-group-item-action bg-light">About</a>
+        <a href="/contactus" class="list-group-item list-group-item-action bg-light">Contact</a>
+      </div>
+    </div>
+    <!-- /#sidebar-wrapper -->
+
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+
+      <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+        <button  type="button" class="btn btn-outline-dark" id="menu-toggle" >
+                <i class="fa fa-bars"></i>
+        </button>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+      </nav>
+
+      <div class="container-fluid">
+
+    <div class="row" style="margin-top:30px;">
+        <div class="col-sm-2 left">
+
+        </div>
+        <div class="col mid">
+            <div class="card">
+                <div class="responsiveRapper">
+                    <iframe
+                    src="https://www.youtube.com/embed/{{video_id}}">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-2 right">
+
+        </div>
+
+    </div>
+
+    <!-- youtube video link row  -->
+    <div class="row">
+        <div class="col-sm-2 left">
+
+        </div>
+        <div class="col mid">
+            <div class="card">
+                <div class="card-header bg-danger text-center">
+                    <h4 style="color:white;">Video Details</h4>
+                </div>
+                <div class="card-body">
+                    <table>
+                        <tr>
+                            <td>Video link</td>
+                            <td>{{video_link}}</td>
+                        </tr>
+                        {%for key in video_details.keys()%}
+                        <tr>
+                            <td>{{key|capitalize }}</td>
+                            <td>{{video_details[key]}}</td>
+                        </tr>
+                        {%endfor%}
+                    </table>
+                    <div class="text-center"> <h4>Available video streams</h4></div>
+                    <div>
+                        <ul>
+                        {% for stream in video_streams %}
+                            <li>
+                                <a href="/video_download/{{stream['itag']}}">Type: {{stream['mime_type']}}, Quality: {{stream['res']}}</a>
+                            </li>
+                        {%endfor%}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-2 right">
+
+        </div>
+
+    </div>
+
+{% endblock%}
+      </div></div></div><

@@ -1,0 +1,39 @@
+{%extends "checklayout.html"%}
+{% block title %}
+Getting pdfs
+{% endblock%}
+
+{% block html_body%}
+<h1>hello hello </h1>
+<a href="{{request.path}}.pdf">print</a>
+
+<span id="invoice">{{request.url}}</span>
+<span>{{request.path}}</span>
+
+<div class="fluid-container">
+
+<div class="row" style="margin-top:200px;">
+    <div class="col">
+        <div class="container" style="margin-left:80px;">
+            <h2 style="color:red;">Want a Web Application!</h2>
+            <h5>Please send a query to us.</h5>
+
+            <img src="/static/images/webD.svg">
+
+        </div>
+    </div>
+    <div class="col-sm-1"></div>
+    <div class="col">
+        <form action="/home">
+            <input type="text">
+            <input type="submit">
+        </form>
+
+
+    </div>
+    <div class="col-sm-1"></div>
+</div>
+
+
+</div>
+{% endblock%}
