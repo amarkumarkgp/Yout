@@ -37,9 +37,18 @@ body {
 
 #link_input_row {
     margin-top:300px;
-    position:absolute;
+    position:relative;
     padding:10px;
+
 }
+#sidebar-wrapper {
+	width: 240px;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+	margin-left: -240px;
+}
+
 
 /* The actual popup (appears on top) */
 .popup .popuptext {

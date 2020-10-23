@@ -140,4 +140,5 @@ def page_not_found(e):
 
 @server.route('/about')
 def server_dabout():
+    abort(404)
     return render_template('about.html')
