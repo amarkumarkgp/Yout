@@ -8,7 +8,7 @@ class ContactQuery(db.Model):
     id = Column(Integer, primary_key=True, autoincrement=True)
     name = Column(String(50))
     email = Column(String(50))
-    message = Column(String())
+    message = Column(String(50))
 
     def __init__(self, name=None, email=None, message=None):
         self.name = name
@@ -22,8 +22,8 @@ class ContactQuery(db.Model):
 class SeachedSongsBucket(db.Model):
     __tablename__ = "searchedsongsbucket"
     id = Column(Integer, primary_key=True, autoincrement=True)
-    title = Column(String())
-    song_id = Column(String())
+    title = Column(String(50))
+    song_id = Column(String(50))
     download = Column(Boolean)
     datetime = Column(DateTime())
 

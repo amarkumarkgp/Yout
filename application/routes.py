@@ -15,7 +15,7 @@ server = Blueprint("server", __name__, static_folder='static', template_folder='
 
 class YoutubeDownload:
     def __init__(self, link):
-        self.link = str(link)
+        self.link = link
         self.title = None
         self.views = None
         self.length = None
@@ -61,6 +61,7 @@ def home():
 
 @server.route('/video_detail', methods=["GET", "POST"])
 def get_video_details():
+    session['link'] = None
     if request.method == "POST":
         link = request.form['video_link']
     elif request.method == "GET":
@@ -74,9 +75,9 @@ def get_video_details():
     match = regex.match(link)
     video_id = match.group('id')
     """
-    session['link'] = link
+    session['link'] = str(link)
     print(link)
-    obj = YoutubeDownload(link)
+    obj = YoutubeDownload(session['link'])
     video_details = obj.get_info()
     stream_info = obj.get_streams()
 
