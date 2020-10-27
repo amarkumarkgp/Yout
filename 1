@@ -20,7 +20,7 @@ class YoutubeDownload:
         self.views = None
         self.length = None
         self.rating = None
-        self.video_id = pytube.extract.video_id(self.link)
+        self.video_id = pytube.extract.video_id(link)
         self.yt = pytube.YouTube(self.link)
 
     def get_info(self):
